@@ -4,7 +4,7 @@ from scraper import scrape
 @click.command()
 @click.argument('search_term')
 @click.option('--state-file', 'state_file',
-              help='''State file used to track previously seen items. If the file
+              help='''File used to track previously seen items. If the file
                       exists, uses it for the current run.''',
               default='./state-file.json', show_default=True,
               type=click.Path(exists=False))
