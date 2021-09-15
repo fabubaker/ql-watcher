@@ -1,5 +1,5 @@
 import click
-from scraper import get_new_items
+from scraper import scrape
 
 @click.command()
 @click.argument('search_term')
@@ -19,11 +19,10 @@ def main(search_term, state_file, dry_run):
   ql-watcher scrapes the most recent 30 items for sale from QatarLiving.com
   using SEARCH_TERM, and sends you a text with any new items it finds.
   """
-  new_items = get_new_items(search_term, state_file)
+  new_items = scrape(search_term, state_file)
 
   if dry_run:
     print(new_items)
-
 
 if __name__=='__main__':
   main()

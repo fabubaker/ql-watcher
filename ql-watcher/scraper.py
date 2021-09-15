@@ -3,16 +3,23 @@ import requests
 
 QL_URL = 'https://www.qatarliving.com/backend/api/classified/search'
 
-def get_new_items(search_term, state_file):
+def scrape(search_term, state_file):
   current_items = _get_current_items(search_term)
   seen_items = _get_seen_items(state_file)
+  new_items = _get_new_items(current_items, seen_items)
+  # Merge current_items with seen_items.
+  updated_seen_items = {**seen_items, **current_items}
+
+  _save_items_as_seen(updated_seen_items, state_file)
+
+  return new_items
+
+def _get_new_items(current_items, seen_items):
   new_items = {}
 
   for _id, item in current_items.items():
     if _id not in seen_items:
       new_items[_id] = item
-
-  _save_items_as_seen(current_items, state_file)
 
   return new_items
 
