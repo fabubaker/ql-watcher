@@ -6,7 +6,7 @@ QL_URL = 'https://www.qatarliving.com/backend/api/classified/search'
 def scrape(search_term, state_file):
   current_items = _get_current_items(search_term)
   seen_items = _get_seen_items(state_file)
-  new_items = _get_new_items(current_items, seen_items)
+  new_items = _resolve_new_items(current_items, seen_items)
   # Merge current_items with seen_items.
   updated_seen_items = {**seen_items, **current_items}
 
@@ -14,7 +14,7 @@ def scrape(search_term, state_file):
 
   return new_items
 
-def _get_new_items(current_items, seen_items):
+def _resolve_new_items(current_items, seen_items):
   new_items = {}
 
   for _id, item in current_items.items():
