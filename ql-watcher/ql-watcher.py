@@ -17,7 +17,7 @@ from scraper import scrape
 def main(search_term, state_file, dry_run):
   """
   ql-watcher scrapes the most recent 30 items for sale from QatarLiving.com
-  using SEARCH_TERM, and sends you a text with any new items it finds.
+  using SEARCH_TERM, and sends you an email with any new items it finds.
   """
   new_items = scrape(search_term, state_file)
 
