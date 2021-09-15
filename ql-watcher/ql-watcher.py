@@ -1,5 +1,8 @@
+import yaml
 import click
+
 from scraper import scrape
+from notifier import notify
 
 @click.command()
 @click.argument('search_term')
@@ -26,8 +29,15 @@ def main(search_term, state_file, config_file, dry_run):
   """
   new_items = scrape(search_term, state_file)
 
+  if not new_items:
+    print(f'No new items found for \'{search_term}\'! Exiting...')
+    return
+
   if dry_run:
     print(new_items)
+  else:
+    config = yaml.safe_load(open(config_file))
+    notify(new_items, search_term, config)
 
 if __name__=='__main__':
   main()
