@@ -8,13 +8,18 @@ from scraper import scrape
                       exists, uses it for the current run.''',
               default='./state-file.json', show_default=True,
               type=click.Path(exists=False))
+@click.option('--config-file', 'config_file',
+              help='''YAML file used to load config data from. Should be cloned from
+                      config.yaml.tpl''',
+              default='./config.yaml', show_default=True,
+              type=click.Path(exists=True))
 @click.option('--dry-run',
               help='''Use this option to trigger a dry run of the watcher.
                       In a dry run, new items are fetched but are only
                       printed to STDOUT. Note that the state file is also
                       updated in a dry run.''',
               default=False, show_default=True)
-def main(search_term, state_file, dry_run):
+def main(search_term, state_file, config_file, dry_run):
   """
   ql-watcher scrapes the most recent 30 items for sale from QatarLiving.com
   using SEARCH_TERM, and sends you an email with any new items it finds.
