@@ -1,4 +1,5 @@
-sendgrid:
-  api_key:
-  from_email:
-  to_emails:
+smtp:
+  host:
+  port:
+  username:
+  password:
