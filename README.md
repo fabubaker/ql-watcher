@@ -1,6 +1,6 @@
 # ql-watcher
 
-`ql-watcher` scrapes the most recent 30 items from QatarLiving.com for a search term, and sends you an email with any new items it finds.
+`ql-watcher` scrapes the most recent 30 items from [QatarLiving.com](https://www.qatarliving.com/) for a search term, and sends you an email with any new items it finds.
 
 ## Install
 
