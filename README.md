@@ -44,7 +44,7 @@ Once `config.yaml` has been filled out, you are ready to run `ql-watcher`.
 `ql-watcher` uses a file to keep track of items it has seen before. Let's perform an initial run to generate this file:
 
 ```
-❯ python3 ql-watcher/ql-watcher.py "nintendo"
+❯ python3 ql-watcher.py "nintendo"
 30 new items found for "nintendo"!
 ...
 ```
@@ -54,6 +54,6 @@ This will fetch the most recent 30 items related to "nintendo" and send them to 
 Running it again immediately will tell you that it has found no new items (unless someone posted a new item in that small window!):
 
 ```
-❯ python3 ql-watcher/ql-watcher.py "nintendo"
+❯ python3 ql-watcher.py "nintendo"
 No new items found for "nintendo"! Exiting...
 ```
