@@ -22,12 +22,17 @@ from lib.notifier import notify
                       printed to STDOUT. Note that the state file is also
                       updated in a dry run.''',
               is_flag=True, default=False)
-def main(search_term, state_file, config_file, dry_run):
+@click.option('--vehicles',
+              help='''By default, ql-watcher scrapes the 'classifieds'
+              page of QatarLiving. Use this option to scrape the
+              vehicles page instead of the classifieds page.''',
+              is_flag=True, default=False)
+def main(search_term, state_file, config_file, dry_run, vehicles):
   """
   ql-watcher scrapes the most recent 30 items for sale from QatarLiving.com
   using SEARCH_TERM, and sends you an email with any new items it finds.
   """
-  new_items = scrape(search_term, state_file)
+  new_items = scrape(search_term, state_file, vehicles)
 
   if not new_items:
     print(f'No new items found for "{search_term}"! Exiting...')
