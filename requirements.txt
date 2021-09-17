@@ -3,7 +3,6 @@ charset-normalizer==2.0.5
 click==8.0.1
 idna==3.2
 importlib-metadata==4.8.1
-pkg-resources==0.0.0
 requests==2.26.0
 soupsieve==2.2.1
 typing-extensions==3.10.0.2
