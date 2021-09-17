@@ -1,3 +1,4 @@
+from click.core import F
 import yaml
 import click
 
@@ -30,8 +31,10 @@ def main(search_term, state_file, config_file, dry_run):
   new_items = scrape(search_term, state_file)
 
   if not new_items:
-    print(f'No new items found for \'{search_term}\'! Exiting...')
+    print(f'No new items found for "{search_term}"! Exiting...')
     return
+
+  print(f'{len(new_items)} new items found for "{search_term}"!')
 
   if dry_run:
     print(new_items)
