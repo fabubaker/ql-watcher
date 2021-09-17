@@ -1,6 +1,8 @@
 import json
 import requests
 
+QL_HOSTNAME='https://www.qatarliving.com/'
+
 QL_URLS = {
   'classifieds': 'https://www.qatarliving.com/backend/api/classified/search',
   'vehicles': 'https://www.qatarliving.com/backend/api/vehicles'
@@ -41,7 +43,8 @@ def _get_current_items_from_classifieds(search_term):
 
     current_items[_id] = {
       'title': item['_source']['title'],
-      'price': item['_source']['price']
+      'price': item['_source']['price'],
+      'url': QL_HOSTNAME + item['_source']['path']
     }
 
   return current_items
@@ -58,7 +61,8 @@ def _get_current_items_from_vehicles(search_term):
     current_items[_id] = {
       'title': item['_source']['title'],
       'vehicle': item['_source']['vehicle_title'],
-      'price': item['_source']['price']
+      'price': item['_source']['price'],
+      'url': QL_HOSTNAME + item['_source']['path']
     }
 
   return current_items
