@@ -1,4 +1,3 @@
-from click.core import F
 import yaml
 import click
 
@@ -22,7 +21,7 @@ from notifier import notify
                       In a dry run, new items are fetched but are only
                       printed to STDOUT. Note that the state file is also
                       updated in a dry run.''',
-              default=False, show_default=True)
+              is_flag=True, default=False)
 def main(search_term, state_file, config_file, dry_run):
   """
   ql-watcher scrapes the most recent 30 items for sale from QatarLiving.com
