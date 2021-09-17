@@ -57,3 +57,19 @@ Running it again immediately will tell you that it has found no new items (unles
 ❯ python3 ql-watcher.py "nintendo"
 No new items found for "nintendo"! Exiting...
 ```
+
+### Scheduling `ql-watcher`
+
+`ql-watcher` isn't very useful if you have to keep running it manually every now and then.
+
+Let's schedule it to run every hour using [cron](https://en.wikipedia.org/wiki/Cron).
+
+First, let's add an entry to your crontab for ql-watcher to run every hour. Open up the crontab using `crontab -e` and add the following line:
+
+```
+0 * * * * cd /<path-to-ql-watcher>/ql-watcher.py; python3 ql-watcher.py <search-term>
+```
+
+This will run the ql-watcher script on the 0th minute of every hour, every day. For more info on crontabs, check this [guide](https://ostechnix.com/a-beginners-guide-to-cron-jobs/).
+
+Of course, the script won't run if your computer is shutdown or asleep when the cron job is triggered. For this reason, you should schedule `ql-watcher` on an external server if you want regular notifications.
